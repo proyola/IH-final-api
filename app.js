@@ -11,13 +11,13 @@ const corsConfig = require('./configs/cors.config');
 require('./configs/db.config');
 require('./configs/passport.config').setup(passport);
 
-const artistsRoutes = require('./artists/artists.routes');
-const usersRoutes = require('./routes/users.routes');
+const artistsRoutes = require('./routes/artists.routes');
+const usersRoutes = require('./routes/user.routes');
 const sessionRoutes = require('./routes/session.routes');
 
 const app = express();
 
-app.use(cors(corsConfig))
+app.use(cors(corsConfig));
 
 app.use(logger('dev'));
 
@@ -44,9 +44,13 @@ app.use((req, res, next) => {
 });
 
 // Routes
+
 app.use('/artists', artistsRoutes);
 app.use('/users', usersRoutes);
 app.use('/session', sessionRoutes);
+app.use('/', ( req, res ) => {
+  res.send({status: "ok"});
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next)  => {

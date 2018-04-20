@@ -1,10 +1,11 @@
 {
-  "name": "phone-store-api",
+  "name": "api-final-project",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=phone-store-api:* nodemon ./bin/www"
+    "dev": "DEBUG=api-final-project:* nodemon ./bin/www",
+    "seeds": "node ./bin/seeds"
   },
   "dependencies": {
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
