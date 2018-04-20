@@ -1,4 +1,3 @@
-/*
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -12,7 +11,9 @@ const corsConfig = require('./configs/cors.config');
 require('./configs/db.config');
 require('./configs/passport.config').setup(passport);
 
-make a const with the routes (each one separately)
+const artistsRoutes = require('./artists/phones.routes');
+const usersRoutes = require('./routes/users.routes');
+const sessionRoutes = require('./routes/session.routes');
 
 const app = express();
 
@@ -43,6 +44,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.use('/artists', artistsRoutes);
+app.use('/users', usersRoutes);
+app.use('/session', sessionRoutes);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)  => {
